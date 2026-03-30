@@ -8,7 +8,8 @@
 
 require("dotenv").config();
 const { Client, LocalAuth } = require("whatsapp-web.js");
-const qrcode = require("qrcode-terminal");
+const QRCode = require("qrcode");
+const qrcodeTerminal = require("qrcode-terminal");
 const https = require("https");
 const http = require("http");
 const path = require("path");
@@ -593,9 +594,26 @@ function getMessageId(msg) {
   return `${msg.from}_${msg.timestamp || Date.now()}`;
 }
 
-client.on("qr", (qr) => {
-  console.log("\nEscaneie o QR code abaixo (Dispositivos conectados):\n");
-  qrcode.generate(qr, { small: true });
+client.on("qr", async (qr) => {
+  console.log(
+    "\n[bot] Escaneie no WhatsApp → Definições → Aparelhos ligados → Associar um aparelho."
+  );
+  console.log(
+    "[bot] Nos logs do Railway o QR em ASCII costuma sair ilegível; use o PNG em base64 entre as marcas e converta online (base64 → imagem) ou data URL."
+  );
+  try {
+    const dataUrl = await QRCode.toDataURL(qr, { margin: 2, width: 320, errorCorrectionLevel: "M" });
+    const base64Png = dataUrl.replace(/^data:image\/png;base64,/, "");
+    console.log("[bot] QR_PNG_DATA_URL (cole no browser ou num conversor):");
+    console.log(dataUrl);
+    console.log("[bot] QR_PNG_BASE64_ONLY_START");
+    console.log(base64Png);
+    console.log("[bot] QR_PNG_BASE64_ONLY_END");
+  } catch (e) {
+    console.error("[bot] Falha ao gerar QR em PNG/base64:", e && e.message);
+  }
+  console.log("\n[bot] QR em terminal (referência local; pode falhar em logs remotos):\n");
+  qrcodeTerminal.generate(qr, { small: true });
 });
 
 client.on("ready", () => {
