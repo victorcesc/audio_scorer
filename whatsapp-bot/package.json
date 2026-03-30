@@ -1,0 +1,19 @@
+{
+  "name": "audio-scorer-whatsapp-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bot WhatsApp (whatsapp-web.js) que encaminha áudios para a API do Audio Scorer",
+  "main": "index.cjs",
+  "scripts": {
+    "start": "node index.cjs",
+    "dev": "node index.cjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "1.34.6"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,53 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# Rascunhos do editor (ex.: VS Code / Cursor)
+Untitled-*
+*~
+
+# Áudio de teste local (~33kB+); não versionar. Testes e scripts ignoram se ausente.
+/audios/*.ogg
+
+# Cursor — regras/planos são locais à IDE (evita ruído no remoto)
+.cursor/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de ambiente (não versionar)
+.env*
+!.env*.example
+# Exceção: não versionar (pode listar nomes de integrações que preferes manter só local)
+.env.local.example
+
+# whatsapp-bot — sessão Chromium / Puppeteer (whatsapp-web.js); nunca versionar
+whatsapp-bot/node_modules/
+whatsapp-bot/.env
+whatsapp-bot/.wwebjs_cache/
+whatsapp-bot/.wwebjs_auth/
+
+# Cursor (planos locais da IDE)
+.cursor/plans
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

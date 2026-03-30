@@ -1,0 +1,5 @@
+# Gerado ao correr o bot localmente (LocalAuth / Chromium)
+.wwebjs_auth/
+.wwebjs_cache/
+node_modules/
+.env
